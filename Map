@@ -1,0 +1,101 @@
+<?php
+/**
+ * Plugin Name: shortcode_map
+ * Plugin URI:  Plugin URL Link
+ * Author:      Plugin Author Name
+ * Author URI:  Plugin Author Link
+ * Description: This plugin make for pratice wich is "shortcode map".
+ * Version:     0.1.0
+ * License:     GPL-2.0+
+ * License URL: http://www.gnu.org/licenses/gpl-2.0.txt
+ * text-domain: sm
+*/
+
+// function link_function($att,$con="None"){
+//     $default = array(
+//        'url' => "www.facebook.com"
+//        // 'text' => ""
+//     );
+//     $def_val = shortcode_atts($default, $att);
+//        return sprintf(
+//            "<a href='%s'>%s</a>",
+//            $def_val['url'],
+//            do_shortcode($con)
+//        );
+//    }
+//    add_shortcode('link', 'link_function');
+//    function uc_function($attribute,$content=''){
+//        return strtoupper($content);
+//    }
+//    add_shortcode('uc', 'uc_function');
+   
+function map_function($attribute){
+    $default = array(
+        'width' => "800",
+        'height' => "500",
+        'loc' => "bogura"
+    );
+    $att_def_val = shortcode_atts($default, $attribute);
+
+    $m = <<<EOD
+    <div>
+        <div>
+           <iframe width="{$att_def_val['width']}}" height="{$att_def_val['height']}" src= "https://maps.google.com/maps?q={$att_def_val['loc']}&t=&z=13&ie=UTF8&iwloc=&output=embed">
+           </iframe>
+        </div>
+    </div>
+EOD;
+return $m;
+}
+add_shortcode("map", "map_function");
+
+
+
+// function btn_function($attri) {
+//     $def = array(
+//         'url' => 'www.facebook.com',
+//         'text' => 'Demo'
+//     );
+//     $def_val = shortcode_atts($def, $attri);
+    
+//     $v = `
+//     <div>
+//         <button>
+//             <a href="{$def_val['url']}">{$def_val['text']}"</a>
+//         </button>
+//     </div>
+// `;
+    
+//     return $v;
+// }
+
+// add_shortcode('btn', 'btn_function');
+
+
+
+
+            // <iframe width="{$att_def_val['width']}" height="{$att_def_val['height']}" src="https://www.google.com/maps/place/{$att_def_val['loc']}/@25.623653,89.2306274,10z/data=!3m1!4b1!4m6!3m5!1s0x39fccdcecf5fefc9:0x68bf330fbc933bd3!8m2!3d25.7467925!4d89.2508335!16zL20vMDZfc3E4?entry=ttu" frameborder="0" scrolling="no" marginhight="0" marginwidth="0">
+            // </iframe>
+            
+            
+
+    // $m = <<<EOD 
+    //     <div>
+    //         <div>
+    //             <iframe width='{$att_def_val['width']}' height='{$att_def_val['height']}' src="https://www.google.com/maps/place/{$att_def_val['loc']}/@25.623653,89.2306274,10z/data=!3m1!4b1!4m6!3m5!1s0x39fccdcecf5fefc9:0x68bf330fbc933bd3!8m2!3d25.7467925!4d89.2508335!16zL20vMDZfc3E4?entry=ttu">
+    //             </iframe>
+    //         </div>
+    //     </div>
+    // return $m;
+    // EOD;
+    // return sprintf(
+    //    " <iframe width='%s' height='%s' src='https://www.google.com/maps/place/'%s'/@25.623653,89.2306274,10z/data=!3m1!4b1!4m6!3m5!1s0x39fccdcecf5fefc9:0x68bf330fbc933bd3!8m2!3d25.7467925!4d89.2508335!16zL20vMDZfc3E4?entry=ttu'>
+    //    </iframe>",
+    //    $att_def_val['width'],
+    //    $att_def_val['height'],
+    //    $att_def_val['loc']
+    //    );
+
+   
+
+?>
